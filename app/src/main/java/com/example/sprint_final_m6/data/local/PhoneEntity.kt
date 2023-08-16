@@ -4,12 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tabla_telefonos")
-data class PhoneEntity(
-    @PrimaryKey(autoGenerate = true) var id:Long,
-    var name: String,
-    var price: Int,
-    var image: String
+data class PhoneEntity( val phone:String){
+    @PrimaryKey(autoGenerate = true) var id:Long = 0
+
+}
 
 
-)
+
+
 
