@@ -13,6 +13,6 @@ interface PhoneDao {
     suspend fun insertPhone(phoneEntity: PhoneEntity)
 
     @Query("Select * from tabla_telefonos order by id asc")
-    fun getPhones(): LiveData<PhoneEntity>
+    fun getPhones(): LiveData<List<PhoneEntity>>
 
 }

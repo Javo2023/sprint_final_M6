@@ -23,6 +23,12 @@ class AdapterPhones: RecyclerView.Adapter<AdapterPhones.ItemPhonesViewHolder>(){
         return listItemPhones.size
     }
 
+    fun setData(phones:List<PhoneEntity>){
+        this.listItemPhones.clear()
+        this.listItemPhones.addAll(phones)
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: ItemPhonesViewHolder, position: Int) {
         val telephone= listItemPhones[position]
         holder.bind(telephone)
