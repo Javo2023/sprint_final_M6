@@ -10,7 +10,7 @@ import androidx.room.Query
 interface PhoneDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPhone(phoneEntity: PhoneEntity)
+    suspend fun insertPhone(phoneEntity: List<PhoneEntity>)
 
     @Query("Select * from tabla_telefonos order by id asc")
     fun getPhones(): LiveData<List<PhoneEntity>>

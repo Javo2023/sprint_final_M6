@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class PhoneVM (application: Application):AndroidViewModel(application){
     private val repositorio:Repository
 
-    fun phoneLiveData()=repositorio.getPhoneEntity()
+    fun phoneLiveData()=repositorio.getPhonesEntity()
 
     init{
         val api = TelephoneRetrofit.getRetrofitTelephone()
