@@ -9,20 +9,28 @@ import com.example.sprint_final_m6.data.remote.TelephoneRetrofit
 import kotlinx.coroutines.launch
 
 class PhoneVM (application: Application):AndroidViewModel(application){
-    private val repositorio:Repository
+    private val repository:Repository
 
-    fun phoneLiveData()=repositorio.getPhonesEntity()
+    fun phoneLiveData()=repository.getPhonesEntity()
+
+    fun detailLiveData(id:String)=repository.getDetailEntity(id)
 
     init{
         val api = TelephoneRetrofit.getRetrofitTelephone()
         val phoneDatabase =PhoneDatabase.getDataBase(application).getPhonesDao()
-        repositorio= Repository(api,phoneDatabase)
+        repository= Repository(api,phoneDatabase)
 
     }
 
     fun getAllTelephones() = viewModelScope.launch{
-        repositorio.loadPhones()
+        repository.loadPhones()
 
     }
+    fun getDetailPhoneVM(id:String)=viewModelScope.launch{
+        repository.getDetailPhone(id)
+    }
+
+
+
 
 }

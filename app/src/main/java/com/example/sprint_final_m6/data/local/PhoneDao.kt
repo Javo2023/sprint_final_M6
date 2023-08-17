@@ -15,4 +15,17 @@ interface PhoneDao {
     @Query("Select * from tabla_telefonos order by id asc")
     fun getPhones(): LiveData<List<PhoneEntity>>
 
+   /* @Query("Select * from tabla_telefonos where id = :id")
+    fun getPhone(id:Long): LiveData<PhoneEntity>
+
+    */
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDetailPhone(phoneEntity: PhoneDetailEntity)
+
+    @Query("Select * from tabla_detalle_telefonos where id = :id ")
+    fun getDetailPhone(id:String): LiveData<PhoneDetailEntity>
+
+
+
 }

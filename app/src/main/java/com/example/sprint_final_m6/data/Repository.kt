@@ -1,16 +1,18 @@
 package com.example.sprint_final_m6.data
 
-import android.provider.ContactsContract
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.sprint_final_m6.data.local.PhoneDao
+import com.example.sprint_final_m6.data.local.PhoneDetailEntity
 import com.example.sprint_final_m6.data.local.PhoneEntity
 import com.example.sprint_final_m6.data.remote.Telephone
 import com.example.sprint_final_m6.data.remote.TelephoneApi
+import com.example.sprint_final_m6.data.remote.TelephoneDetail
 
 class Repository (private val telephoneApi: TelephoneApi, private val phoneDao: PhoneDao) {
 
     fun getPhonesEntity(): LiveData<List<PhoneEntity>> = phoneDao.getPhones()
+    fun getDetailEntity(id:String):LiveData<PhoneDetailEntity> = phoneDao.getDetailPhone(id)
 
 
 
@@ -23,16 +25,29 @@ class Repository (private val telephoneApi: TelephoneApi, private val phoneDao: 
                 val phoneEntity = it.map{it.convert() }
                 phoneDao.insertPhone(phoneEntity)
 
-
             }
-
-
         }else{
             Log.e("repositorio", response.errorBody().toString())
         }
 
 
     }
+    suspend fun getDetailPhone(id:String){
+        val response = telephoneApi.getDetailPhone(id)
+        if(response.isSuccessful){
+            val detailResponse = response.body()
+            detailResponse?.let{
+                val phoneDetailEntity = it.convertDetail()
+                phoneDao.insertDetailPhone(phoneDetailEntity)
+            }
 
+        }
+    }
+    //fun getPhone(id:Long):LiveData<PhoneEntity > = phoneDao.getDetailPhone()
 }
+
+
+
 fun Telephone.convert(): PhoneEntity = PhoneEntity(this.id,this.name,this.price,this.image)
+
+fun TelephoneDetail.convertDetail(): PhoneDetailEntity = PhoneDetailEntity(this.id,this.name,this.price,this.description,this.lastPrice,this.credit,this.image)
