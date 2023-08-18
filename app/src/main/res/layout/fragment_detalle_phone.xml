@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkPrimary"
     tools:context=".presentation.DetallePhoneFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDetail"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_width="412dp"
+        android:layout_height="691dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,10 +22,10 @@
 
             <TextView
                 android:id="@+id/tvDescription"
-                android:layout_width="297dp"
-                android:layout_height="97dp"
+                android:layout_width="300dp"
+                android:layout_height="123dp"
                 android:layout_marginTop="12dp"
-                android:text="TextView"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/tvPriceDetail"
                 app:layout_constraintHorizontal_bias="0.538"
                 app:layout_constraintStart_toStartOf="@+id/tvPriceDetail"
@@ -30,32 +33,39 @@
 
             <TextView
                 android:id="@+id/tvCreditCard"
-                android:layout_width="88dp"
-                android:layout_height="22dp"
-                android:layout_marginTop="36dp"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/lightPrimary"
+                android:gravity="center"
                 android:text="TextView"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintHorizontal_bias="0.89"
                 app:layout_constraintStart_toEndOf="@+id/tvSku"
                 app:layout_constraintTop_toBottomOf="@+id/imageDetail" />
 
             <TextView
                 android:id="@+id/tvSku"
-                android:layout_width="108dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="36dp"
+                android:layout_width="203dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="136dp"
+                android:background="@color/lightPrimary"
+                android:gravity="center"
                 android:text="TextView"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageDetail"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageDetail"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageDetail" />
 
             <TextView
                 android:id="@+id/tvPriceDetail"
-                android:layout_width="180dp"
+                android:layout_width="300dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
+                android:gravity="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvNameDetail"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -64,8 +74,8 @@
 
             <ImageView
                 android:id="@+id/imageDetail"
-                android:layout_width="226dp"
-                android:layout_height="237dp"
+                android:layout_width="193dp"
+                android:layout_height="190dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -73,22 +83,22 @@
 
             <TextView
                 android:id="@+id/tvLastPrice"
-                android:layout_width="180dp"
+                android:layout_width="300dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/hello_blank_fragment"
+                android:gravity="center"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageDetail"
-                app:layout_constraintHorizontal_bias="0.663"
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="@+id/imageDetail"
                 app:layout_constraintTop_toBottomOf="@+id/tvCreditCard" />
 
             <TextView
                 android:id="@+id/tvNameDetail"
-                android:layout_width="180dp"
+                android:layout_width="300dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
+                android:gravity="center"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/tvLastPrice"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -103,8 +113,10 @@
                 android:text="Contáctanos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tvDescription"
+                app:layout_constraintHorizontal_bias="0.514"
                 app:layout_constraintStart_toStartOf="@+id/tvDescription"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintVertical_bias="0.401" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
