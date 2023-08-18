@@ -22,7 +22,7 @@ class Repository (private val telephoneApi: TelephoneApi, private val phoneDao: 
             val resp = response.body()
 
             resp?.let{
-                val phoneEntity = it.map{it.convert() }
+                val phoneEntity = it.map{it.convertToEntity() }
                 phoneDao.insertPhone(phoneEntity)
 
             }
@@ -37,17 +37,17 @@ class Repository (private val telephoneApi: TelephoneApi, private val phoneDao: 
         if(response.isSuccessful){
             val detailResponse = response.body()
             detailResponse?.let{
-                val phoneDetailEntity = it.convertDetail()
+                val phoneDetailEntity = it.convertDetailToEntity()
                 phoneDao.insertDetailPhone(phoneDetailEntity)
             }
 
         }
     }
-    //fun getPhone(id:Long):LiveData<PhoneEntity > = phoneDao.getDetailPhone()
+
 }
 
 
 
-fun Telephone.convert(): PhoneEntity = PhoneEntity(this.id,this.name,this.price,this.image)
 
-fun TelephoneDetail.convertDetail(): PhoneDetailEntity = PhoneDetailEntity(this.id,this.name,this.price,this.description,this.lastPrice,this.credit,this.image)
+
+fun TelephoneDetail.convertDetailToEntity(): PhoneDetailEntity = PhoneDetailEntity(this.id,this.name,this.price,this.description,this.lastPrice,this.credit,this.image)
